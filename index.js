@@ -39,8 +39,6 @@ function setupBoard() {
 
 function clearBoard() {
     let board = document.getElementById("table");
-    let button = document.getElementById("clear");
-    button.textContent = "Clear";
 
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
@@ -52,7 +50,7 @@ function clearBoard() {
 
 function winner(row, cell) {
     let board = document.getElementById("table");
-    let message = document.getElementById("winner");
+    let message = document.getElementById("clear");
     if (board.rows[row].cells[cell].textContent === "X") {
         message.textContent = "X has WON!";
     } else {
