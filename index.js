@@ -50,6 +50,17 @@ function clearBoard() {
     }
 }
 
+function winner(row, cell) {
+    let board = document.getElementById("table");
+    let message = document.getElementById("winner");
+    if (board.rows[row].cells[cell].textContent === "X") {
+        message.textContent = "X has WON!";
+    } else {
+        message.textContent = "O has WON!";
+    }
+    clearBoard();
+}
+
 function checkWin(moves) {
     let board = document.getElementById("table");
     //Check if board is filled
@@ -62,7 +73,7 @@ function checkWin(moves) {
         if (board.rows[i].cells[0].textContent === board.rows[i].cells[1].textContent &&
             board.rows[i].cells[1].textContent === board.rows[i].cells[2].textContent &&
             board.rows[i].cells[0].textContent !== "") {
-            clearBoard();
+            winner(i, 0);
             return 1;
         }
     }
@@ -71,7 +82,7 @@ function checkWin(moves) {
         if (board.rows[0].cells[i].textContent === board.rows[1].cells[i].textContent &&
             board.rows[1].cells[i].textContent === board.rows[2].cells[i].textContent &&
             board.rows[0].cells[i].textContent !== "") {
-            clearBoard();
+            winner(0, i);
             return 1;
         }
     }
@@ -79,13 +90,13 @@ function checkWin(moves) {
     if (board.rows[0].cells[0].textContent === board.rows[1].cells[1].textContent &&
         board.rows[1].cells[1].textContent === board.rows[2].cells[2].textContent &&
         board.rows[0].cells[0].textContent !== "") {
-        clearBoard();
+        winner(0,0);
         return 1;
     }
     if (board.rows[0].cells[2].textContent === board.rows[1].cells[1].textContent &&
         board.rows[1].cells[1].textContent === board.rows[2].cells[0].textContent &&
         board.rows[0].cells[2].textContent !== "") {
-        clearBoard();
+        winner(0,2);
         return 1;
     }
     return moves + 1;
