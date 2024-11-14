@@ -46,15 +46,20 @@ function clearBoard() {
     }
 }
 
-function checkWin() {
+function checkWin(moves) {
     let board = document.getElementById("table");
+    //Check if board is filled
+    if (moves >= 9) {
+        clearBoard();
+        return 0;
+    }
     // Check rows for a win
     for (let i = 0; i < 3; i++) {
         if (board.rows[i].cells[0].textContent === board.rows[i].cells[1].textContent &&
             board.rows[i].cells[1].textContent === board.rows[i].cells[2].textContent &&
             board.rows[i].cells[0].textContent !== "") {
             clearBoard();
-            return;
+            return 0;
         }
     }
     // Check columns for a win
@@ -63,7 +68,7 @@ function checkWin() {
             board.rows[1].cells[i].textContent === board.rows[2].cells[i].textContent &&
             board.rows[0].cells[i].textContent !== "") {
             clearBoard();
-            return;
+            return 0;
         }
     }
     // Check diagonals for a win
@@ -71,13 +76,13 @@ function checkWin() {
         board.rows[1].cells[1].textContent === board.rows[2].cells[2].textContent &&
         board.rows[0].cells[0].textContent !== "") {
         clearBoard();
-        return;
+        return 0;
     }
     if (board.rows[0].cells[2].textContent === board.rows[1].cells[1].textContent &&
         board.rows[1].cells[1].textContent === board.rows[2].cells[0].textContent &&
         board.rows[0].cells[2].textContent !== "") {
         clearBoard();
-        return;
+        return 0;
     }
 }
 
