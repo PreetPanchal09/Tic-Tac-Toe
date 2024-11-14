@@ -6,10 +6,14 @@
 }
 
 .cell {
-    width: 30vw;
-    height: 30vh;
+    width: 25vw;
+    height: 25vw;
+    font-size: 5vw;
+}
+
+#table, .cell, tr, th {
     border: 2px solid black;
-    font-size: 3rem;
+    border-collapse: collapse;
 }
 
 #clear {
