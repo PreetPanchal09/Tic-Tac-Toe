@@ -1,7 +1,13 @@
-let XO = 1;
+function ready(fn) {
+    if (document.readyState !== "loading") {
+        fn();
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}
 
 function setupBoard() {
-    
+    let XO = 1;
     let board = document.getElementById("table");
 
     for (let i = 0; i < 3; i++) {
@@ -23,13 +29,18 @@ function setupBoard() {
             row.appendChild(cell);
         }
     }
+
+    let clearButton = document.getElementById("clear");
+    clearButton.addEventListener("click", clearBoard);
 }
 
-function ready(fn) {
-    if (document.readyState !== "loading") {
-        fn();
-    } else {
-        document.addEventListener("DOMContentLoaded", fn);
+function clearBoard() {
+    let board = document.getElementById("table");
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            let cell = board.rows[i].cells[j];
+            cell.textContent = "";
+        }
     }
 }
 
